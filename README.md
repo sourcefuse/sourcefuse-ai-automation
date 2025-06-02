@@ -15,15 +15,16 @@ running individual tests or a suite of tests and generating detailed reports.
 * Python 3.8 or higher
 * Pip (Python package manager)
 
-Installation
-Clone the repository:
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-Set up a virtual environment (optional but recommended):
+Installation: 
+Clone the repository: 
+git clone https://github.com/sourcefuse/sourcefuse-ai-automation.git 
+cd your-repo-name 
+Set up a virtual environment (optional but recommended): 
 
 python3 -m venv .venv
 source .venv/bin/activate  # On macOS/Linux
 .venv\Scripts\activate     # On Windows
+
 Install dependencies:
 
 pip install -r requirements.txt
@@ -31,69 +32,72 @@ Set up environment variables:
 Create a .env file in the root directory and add your Gemini API key:
 
 Gemini_API_Key=your_api_key_here
+
 **Project Structure**
 
 project/
-│
-├── engine/
-│   ├── base.py           # Base framework class
-│   └── reporter.py       # Reporting functionality
-├── tests/
-│   ├── test_login.py     # Login test case
-│   ├── test_add_to_cart.py  # Add to cart test case
-│   ├── test_remove_from_cart.py  # Remove from cart test case
-│   └── __init__.py
-├── reports/              # Directory for generated reports
-├── config.py             # Configuration settings
-├── run.py                # Main script to run all tests
-├── run_single_test.py    # Script to run a single test
-└── requirements.txt      # List of dependencies
 
-**Usage**
-Running All Tests
-To run all tests, use the run.py script:
-python3 run.py
+engine/
+ - base.py           # Base framework class
+ - reporter.py       # Reporting functionality
+tests/
+ - test_login.py     # Login test case
+ - test_add_to_cart.py  # Add to cart test case
+ - test_remove_from_cart.py  # Remove from cart test case
+    - __init__.py
+reports/              # Directory for generated reports
+config.py             # Configuration settings
+run.py                # Main script to run all tests
+run_single_test.py    # Script to run a single test
+requirements.txt      # List of dependencies
+
+**Usage** 
+Running All Tests 
+To run all tests, use the run.py script: 
+python3 run.py 
+
 This will execute all test cases defined in the tests/ directory and generate JSON, CSV, and HTML reports in the reports/ folder.
 
-Running a Single Test
-To run a single test, use the run_single_test.py script. Provide the test module and task name as arguments:
-python3 run_single_test.py tests.test_login LOGIN_TASK
-This will execute only the LOGIN_TASK from the tests/test_login.py file.
+Running a Single Test 
+To run a single test, use the run_single_test.py script. Provide the test module and task name as arguments: 
+python3 run_single_test.py tests.test_login LOGIN_TASK 
+This will execute only the LOGIN_TASK from the tests/test_login.py file. 
 
-Example Test Cases
-Login Test (tests/test_login.py)
+Example Test Cases 
+Login Test (tests/test_login.py) 
 
-LOGIN_TASK = (
-    'Important : I am UI Automation tester validating the tasks'
-    'Open website https://www.saucedemo.com/'
-    'Login with username and password'
-    'Verify user gets logged in to the website'
-)
+LOGIN_TASK = ( 
+    'Important : I am UI Automation tester validating the tasks' 
+    'Open website https://www.saucedemo.com/' 
+    'Login with username and password' 
+    'Verify user gets logged in to the website' 
+) 
 
-**Reporting**
-The framework generates the following reports in the reports/ directory:
-* JSON Report: Contains detailed test results in JSON format.
-* CSV Report: Provides a tabular view of test results.
-* HTML Report: Offers a visually appealing summary of test results.
+**Reporting** 
+The framework generates the following reports in the reports/ directory: 
+* JSON Report: Contains detailed test results in JSON format. 
+* CSV Report: Provides a tabular view of test results. 
+* HTML Report: Offers a visually appealing summary of test results. 
 
 
-**Adding New Tests**
-Create a new file in the tests/ directory (e.g., tests/test_checkout.py).
+**Adding New Tests** 
+Create a new file in the tests/ directory (e.g., tests/test_checkout.py). 
 
-Define a new task in the file:
+Define a new task in the file: 
 
-CHECKOUT_TASK = (
-    'Important : I am UI Automation tester validating the tasks'
-    'Open website https://www.saucedemo.com/'
-    'Login with username and password'
-    'Proceed to checkout'
-    'Verify checkout is successful'
-)
-Run the new test using the run_single_test.py script:
+CHECKOUT_TASK = ( 
+    'Important : I am UI Automation tester validating the tasks' 
+    'Open website https://www.saucedemo.com/' 
+    'Login with username and password' 
+    'Proceed to checkout' 
+    'Verify checkout is successful' 
+) 
 
-python3 run_single_test.py tests.test_checkout CHECKOUT_TASK
+Run the new test using the run_single_test.py script: 
 
-**Troubleshooting**
+python3 run_single_test.py tests.test_checkout CHECKOUT_TASK 
+
+**Troubleshooting** 
 Common Issues
 1. ModuleNotFoundError:
 Ensure all dependencies are installed by running:
