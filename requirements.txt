@@ -4,6 +4,7 @@
 pydantic-settings>=2.0.0  # For BaseSettings (required for config.py)
 pydantic>=2.0.0           # For Pydantic models and validation
 asyncio>=3.0              # For asynchronous task execution
+playwright>=1.52.0        # For browser automation and web scraping
 
 # AI and LLM dependencies
 langchain-google-genai>=0.1.0  # For ChatGoogleGenerativeAI (Gemini API integration)
