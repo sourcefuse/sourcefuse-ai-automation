@@ -1,124 +1,144 @@
-**AI Test Automation Framework**
-This is a tool for automating UI tests using AI-powered tools like Google Gemini and 
-browser automation. The framework is designed to be modular, scalable, and easy to use, with support for 
-running individual tests or a suite of tests and generating detailed reports.
+# AI Test Automation Framework
 
-**Features**
-* AI-Powered Testing: Uses Google Gemini for natural language processing and task execution.
-* Browser Automation: Integrates with browser automation tools to perform UI tasks.
-* Modular Design: Tests are organized into separate files for easy maintenance.
-* Reporting: Generates JSON, CSV, and HTML reports for test results.
-* Dynamic Test Execution: Supports running individual tests without modifying the code.
-* Asynchronous Execution: Uses asyncio for efficient task execution.
+This is a tool for automating UI tests using AI-powered tools like Google Gemini and browser automation. The framework is designed to be **modular**, **scalable**, and **easy to use**, with support for running individual tests or a suite of tests, and generating detailed reports.
 
-**Prerequisites**
-* Python 3.8 or higher
-* Pip (Python package manager)
+---
 
-Installation: 
-Clone the repository: 
-git clone https://github.com/sourcefuse/sourcefuse-ai-automation.git 
-cd your-repo-name 
-Set up a virtual environment (optional but recommended): 
+## 🔧 Features
 
+- **AI-Powered Testing**: Uses Google Gemini for natural language processing and task execution.  
+- **Browser Automation**: Integrates with browser automation tools to perform UI tasks.  
+- **Modular Design**: Tests are organized into separate files for easy maintenance.  
+- **Reporting**: Generates JSON, CSV, and HTML reports for test results.  
+- **Dynamic Test Execution**: Supports running individual tests without modifying the code.  
+- **Asynchronous Execution**: Uses `asyncio` for efficient task execution.
+
+---
+
+## 🧱 Prerequisites
+
+- Python 3.8 or higher  
+- Pip (Python package manager)
+
+---
+
+## 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/sourcefuse/sourcefuse-ai-automation.git
+cd sourcefuse-ai-automation
+
+# Set up a virtual environment (optional but recommended)
 python3 -m venv .venv
-source .venv/bin/activate  # On macOS/Linux
-.venv\Scripts\activate     # On Windows
+source .venv/bin/activate    # On macOS/Linux
+.venv\Scripts\activate       # On Windows
 
-Install dependencies:
-
+# Install dependencies
 pip install -r requirements.txt
-Set up environment variables:
+
+# Set up environment variables:
 Create a .env file in the root directory and add your Gemini API key:
 
 Gemini_API_Key=your_api_key_here
 
-**Project Structure**
+# Project Structure
 
 project/
+│
+├── engine/
+│   ├── base.py            # Base framework class
+│   └── reporter.py        # Reporting functionality
+│
+├── tests/
+│   ├── test_login.py         # Login test case
+│   ├── test_add_to_cart.py   # Add to cart test case
+│   ├── test_remove_from_cart.py  # Remove from cart test case
+│   └── __init__.py
+│
+├── reports/              # Directory for generated reports
+├── config.py             # Configuration settings
+├── run.py                # Main script to run all tests
+├── run_single_test.py    # Script to run a single test
+├── requirements.txt      # List of dependencies
 
-engine/
- - base.py           # Base framework class
- - reporter.py       # Reporting functionality
-tests/
- - test_login.py     # Login test case
- - test_add_to_cart.py  # Add to cart test case
- - test_remove_from_cart.py  # Remove from cart test case
-    - __init__.py
-reports/              # Directory for generated reports
-config.py             # Configuration settings
-run.py                # Main script to run all tests
-run_single_test.py    # Script to run a single test
-requirements.txt      # List of dependencies
+🚀 Usage
 
-**Usage** 
-Running All Tests 
-To run all tests, use the run.py script: 
-python3 run.py 
+**Run All Tests**
 
-This will execute all test cases defined in the tests/ directory and generate JSON, CSV, and HTML reports in the reports/ folder.
+    python3 run.py
 
-Running a Single Test 
-To run a single test, use the run_single_test.py script. Provide the test module and task name as arguments: 
-python3 run_single_test.py tests.test_login LOGIN_TASK 
-This will execute only the LOGIN_TASK from the tests/test_login.py file. 
+This will execute all test cases in the tests/ directory and generate JSON, CSV, and HTML reports in the reports/ folder.
 
-Example Test Cases 
-Login Test (tests/test_login.py) 
+**Run a Single Test**
 
-LOGIN_TASK = ( 
-    'Important : I am UI Automation tester validating the tasks' 
-    'Open website https://www.saucedemo.com/' 
-    'Login with username and password' 
-    'Verify user gets logged in to the website' 
-) 
+    python3 run_single_test.py tests.test_login LOGIN_TASK
+    
+This will execute only the LOGIN_TASK from the tests/test_login.py file.
 
-**Reporting** 
-The framework generates the following reports in the reports/ directory: 
-* JSON Report: Contains detailed test results in JSON format. 
-* CSV Report: Provides a tabular view of test results. 
-* HTML Report: Offers a visually appealing summary of test results. 
+🧪 Example Test Case
 
+Login Test (tests/test_login.py):
 
-**Adding New Tests** 
-Create a new file in the tests/ directory (e.g., tests/test_checkout.py). 
+LOGIN_TASK = (
+    'Important : I am UI Automation tester validating the tasks '
+    'Open website https://www.saucedemo.com/ '
+    'Login with username and password '
+    'Verify user gets logged in to the website'
+)
 
-Define a new task in the file: 
+📊 Reporting
 
-CHECKOUT_TASK = ( 
-    'Important : I am UI Automation tester validating the tasks' 
-    'Open website https://www.saucedemo.com/' 
-    'Login with username and password' 
-    'Proceed to checkout' 
-    'Verify checkout is successful' 
-) 
+Reports are generated in the reports/ directory:
 
-Run the new test using the run_single_test.py script: 
+ - JSON Report: Detailed results in JSON format
+ - CSV Report: Tabular view of results
+ - HTML Report: Visually formatted summary
 
-python3 run_single_test.py tests.test_checkout CHECKOUT_TASK 
+➕ Adding New Tests
 
-**Troubleshooting** 
-Common Issues
-1. ModuleNotFoundError:
-Ensure all dependencies are installed by running:
-pip install -r requirements.txt
+1. Create a new file in tests/ (e.g., tests/test_checkout.py)
 
-2. API Key Not Found:
-Verify that the .env file contains the correct Gemini_API_Key.
+2. Define a new task:
 
-3. Test Not Found:
-Double-check the test module and task name when running a single test.
+CHECKOUT_TASK = (
+    'Important : I am UI Automation tester validating the tasks '
+    'Open website https://www.saucedemo.com/ '
+    'Login with username and password '
+    'Proceed to checkout '
+    'Verify checkout is successful'
+)
 
-Contributing
-Contributions are welcome! Please follow these steps:
+Run the new test:
 
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Submit a pull request with a detailed description of your changes.
+    python3 run_single_test.py tests.test_checkout CHECKOUT_TASK
 
-**Contact**
-For questions or feedback, please contact:
+🛠 Troubleshooting
 
-**Name**: Ankit Aswal
-**Email**: ankit.aswal@sourcefuse.com
-**GitHub**: ankit0412
+1. ModuleNotFoundError
+ Make sure dependencies are installed:
+
+    pip install -r requirements.txt
+
+2. API Key Not Found
+ Ensure .env contains your Gemini API key:
+
+    Gemini_API_Key=your_api_key_here
+    
+3. Test Not Found
+ Double-check the test module and task name when using run_single_test.py.
+
+🤝 Contributing
+Contributions are welcome!
+To contribute:
+Fork the repository
+
+Create a new branch
+
+Submit a pull request with a detailed description
+
+📬 Contact
+Name: Ankit Aswal
+Email: ankit.aswal@sourcefuse.com
+GitHub: ankit0412
+
