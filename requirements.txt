@@ -15,6 +15,6 @@ browser-use>=0.1.0        # For Agent and browser automation tasks
 # Additional utilities
 python-dotenv>=1.0.0      # For loading environment variables (optional, if you use .env files)
 
-# Reporting dependencies
+# Reporting dependencies for reporting test results
 pytest-html>=3.0.0        # For generating HTML reports (optional, if you want advanced HTML reporting)
 langchain-core~=0.3.40
